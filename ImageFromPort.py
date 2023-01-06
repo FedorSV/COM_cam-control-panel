@@ -50,3 +50,4 @@ def createImage(width, height):
                 img.putpixel((x, y), pixels[width*y+x])
         img.save('created_img.png')
     except:
+        print("no COM")
