@@ -39,15 +39,17 @@ def readFromPort(portName, baudrate, width, height): #функция чтени�
 
     return pixels
 
-def createImage(width, height):
+def createImage(width, height, portName, baudrate):
     img = Image.new('RGB', (width, height))
     img.save('created_img.png')
     try:
-        pixels = readFromPort("COM3", 9600, width, height)
+        pixels = readFromPort(portName, baudrate, width, height)
 
         for y in range(height):
             for x in range(width): 
                 img.putpixel((x, y), pixels[width*y+x])
         img.save('created_img.png')
     except:
-        print("no COM")
+        print("no COM_device")
+
+    
