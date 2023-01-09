@@ -26,6 +26,8 @@ def transformToRGB888(pixelByte): # функция форматирования 
 def readFromPort(portName, baudrate, width, height): #функция чтения и форматирования данных с порта
     ser = serial.Serial(portName, baudrate)
 
+    ser.write(255)
+    
     while True: 
         if ser.read(1) == b'\xbb':
             m = ser.read(width * height * 2)
