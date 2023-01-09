@@ -2,8 +2,11 @@ import PySimpleGUI as sg
 from ImageFromPort import *
 import serial
 
+ser = serial.Serial('COM3', 9600)
+
 createImage(640, 480, 'COM3', 9600)
 sg.theme('DarkAmber')
+
 
 layout = [[sg.Image('created_img.png'), sg.Image(key = '-OUTPUT-')],
           [sg.Button('Create'), sg.Exit()],
@@ -17,11 +20,11 @@ while True:
     if event == sg.WIN_CLOSED or event == 'Exit':
         break
     if event == 'Create':
+        ser.write(255)
         createImage(640, 480, 'COM3', 9600)
         window['-OUTPUT-'].update()
     if event == 'Send':
         try:
-            ser = serial.Serial('COM3', 9600)
             ser.write(int(values['-COMMAND-']))
             print('Command was sended')
         except:
