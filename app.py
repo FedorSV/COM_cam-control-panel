@@ -1,9 +1,11 @@
 import PySimpleGUI as sg
 from ImageFromPort import *
 import serial
+from PIL import Image
 
+img = Image.new('RGB', (640, 480))
+img.save('created_img.png')
 
-createImage(640, 480, 'COM3', 9600)
 sg.theme('DarkAmber')
 
 
