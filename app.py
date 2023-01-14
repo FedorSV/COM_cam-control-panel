@@ -25,8 +25,8 @@ while True:
     if event == 'Send':
         try:
             console = serial.Serial('COM3', 9600)
-            console.write(int(values['-COMMAND-']))
-            print('Command was sended')
+            console.write(int(values['-COMMAND-']), 2)
+            print('Command', values['--COMMAND'], ' was sended')
             console.close()
         except:
             print('Something went wrong')
