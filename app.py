@@ -8,7 +8,6 @@ img.save('created_img.png')
 
 sg.theme('DarkAmber')
 
-
 layout = [[sg.Image('created_img.png'), sg.Image(key = '-OUTPUT-')],
           [sg.Button('Create'), sg.Exit()],
           [sg.InputText(key='-COMMAND-'), sg.Button('Send')]]
@@ -28,6 +27,8 @@ while True:
             console = serial.Serial('COM3', 9600)
             console.write(int(values['-COMMAND-']))
             print('Command was sended')
+            console.close()
         except:
             print('Something went wrong')
+
 window.close()

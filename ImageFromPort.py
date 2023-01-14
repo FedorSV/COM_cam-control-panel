@@ -32,7 +32,8 @@ def readFromPort(portName, baudrate, width, height): #функция чтени�
         if ser.read(1) == b'\xbb':
             m = ser.read(width * height * 2)
             break
-
+    
+    ser.close()
     pixels = list(m) #преобразование данных в список десятичных чисел
     pixels = list(map(bin, pixels)) #каждый байт в двоичное сичло
     pixels = list(map(complByte, pixels)) #дополнение байтов до 8-значной формы
